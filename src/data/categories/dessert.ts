@@ -1,0 +1,70 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'dessert',
+    name: '甜點・冰品',
+    emoji: '🍧',
+    blurb: '甜食裝在另一個胃，來點甜蜜犒賞自己。',
+    traits: { sweet: 1, meatless: 1, veggie: 0, pricey: 0.1 },
+    vibes: { warm: -0.3, heavy: -0.2, comfort: 0.7, healthy: -0.6, speed: 0.5, social: 0.3 },
+    meals: ['tea', 'lateNight'],
+    priceLevel: 1,
+  },
+  dishes: [
+    {
+      id: 'mango-shaved-ice',
+      name: '芒果冰',
+      emoji: '🥭',
+      traits: { cold: 1, bowl: 1, sharing: 0.7, taiwanese: 1, sour: 0.3 },
+      vibes: { warm: -1, social: 0.6 },
+      priceLevel: 2,
+    },
+    {
+      id: 'douhua',
+      name: '豆花',
+      emoji: '🍮',
+      traits: { tofu: 1, bowl: 1, cold: 0.5, taiwanese: 1 },
+      vibes: { warm: 0, healthy: 0, heavy: -0.5 },
+    },
+    {
+      id: 'waffle',
+      name: '鬆餅',
+      emoji: '🧇',
+      traits: { western: 1, grilled: 1, creamy: 0.8, egg: 0.4 },
+      vibes: { warm: 0.3, speed: -0.4, social: 0.5 },
+      priceLevel: 2,
+    },
+    {
+      id: 'cake',
+      name: '蛋糕',
+      emoji: '🍰',
+      traits: { western: 1, creamy: 1, egg: 0.4, cold: 0.4 },
+      vibes: { speed: -0.2, social: 0.4 },
+      priceLevel: 2,
+    },
+    {
+      id: 'wheel-cake',
+      name: '車輪餅',
+      emoji: '🥮',
+      traits: { filled: 1, grilled: 1, dough: 0.6, taiwanese: 1, handheld: 1, nightMarket: 0.7 },
+      vibes: { warm: 0.6, speed: 0.9 },
+    },
+    {
+      id: 'tangyuan',
+      name: '湯圓・紅豆湯',
+      emoji: '🥣',
+      traits: { glutinous: 1, soup: 1, filled: 0.6, bowl: 1, taiwanese: 0.8, cold: 0 },
+      vibes: { warm: 1, comfort: 1 },
+      mapKeyword: '湯圓',
+    },
+    {
+      id: 'bubble-tea',
+      name: '珍珠奶茶',
+      emoji: '🧋',
+      traits: { cold: 0.8, creamy: 0.8, taiwanese: 1, handheld: 1, bowl: 0 },
+      vibes: { warm: -0.6, speed: 1, social: 0 },
+      meals: ['lunch', 'tea', 'dinner', 'lateNight'],
+    },
+  ],
+})

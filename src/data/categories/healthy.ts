@@ -1,0 +1,56 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'healthy',
+    name: '健康餐・輕食',
+    emoji: '🥗',
+    blurb: '高蛋白、多蔬菜，吃得飽也吃得沒負擔。',
+    traits: { veggie: 1, fried: 0, boxed: 0.5, pricey: 0.3 },
+    vibes: { warm: -0.1, heavy: -0.7, comfort: -0.1, healthy: 1, speed: 0.6, social: -0.6 },
+    meals: ['lunch', 'dinner'],
+    priceLevel: 2,
+  },
+  dishes: [
+    {
+      id: 'salad',
+      name: '沙拉',
+      emoji: '🥗',
+      traits: { cold: 1, western: 1, meatless: 0.5, chicken: 0.4, bowl: 0.7, boxed: 0.3 },
+      vibes: { warm: -0.7, heavy: -1 },
+    },
+    {
+      id: 'sous-vide-chicken-box',
+      name: '舒肥雞餐盒',
+      emoji: '🍱',
+      traits: { chicken: 1, boxed: 1, rice: 0.6, steamed: 0.5, bowl: 0 },
+      vibes: { heavy: -0.2 },
+      mapKeyword: '健康餐盒',
+    },
+    {
+      id: 'poke-bowl',
+      name: '波奇碗',
+      emoji: '🐟',
+      traits: {
+        raw: 1,
+        seafood: 1,
+        fish: 1,
+        rice: 0.8,
+        bowl: 1,
+        cold: 0.8,
+        western: 0.5,
+        boxed: 0,
+      },
+      vibes: { warm: -0.6, heavy: -0.3, comfort: -0.6 },
+    },
+    {
+      id: 'runbing',
+      name: '潤餅',
+      emoji: '🌯',
+      traits: { dough: 1, handheld: 1, taiwanese: 1, pork: 0.4, sweet: 0.3, cold: 0.4, boxed: 0 },
+      vibes: { comfort: 0.7, heavy: -0.3, speed: 0.9 },
+      meals: ['lunch', 'dinner', 'tea'],
+      priceLevel: 1,
+    },
+  ],
+})

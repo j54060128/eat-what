@@ -1,0 +1,60 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'korean',
+    name: '韓式料理',
+    emoji: '🥘',
+    blurb: '辣中帶甜的韓式風味，配泡菜剛剛好。',
+    traits: { korean: 1, spicy: 0.6, pricey: 0.3 },
+    vibes: { warm: 0.6, heavy: 0.6, comfort: -0.2, healthy: -0.2, speed: 0.2, social: 0.4 },
+    meals: ['lunch', 'dinner', 'lateNight'],
+    priceLevel: 2,
+  },
+  dishes: [
+    {
+      id: 'korean-fried-chicken',
+      name: '韓式炸雞',
+      emoji: '🍗',
+      traits: { chicken: 1, fried: 1, sweet: 0.5, spicy: 0.5, sharing: 0.8, handheld: 0.5 },
+      vibes: { healthy: -0.8, social: 0.8 },
+    },
+    {
+      id: 'budae-jjigae',
+      name: '部隊鍋',
+      emoji: '🍲',
+      traits: { soup: 1, noodle: 1, cheese: 0.6, pork: 0.6, sharing: 0.8, spicy: 0.7 },
+      vibes: { warm: 1, heavy: 0.8, social: 0.8, speed: -0.2 },
+    },
+    {
+      id: 'bibimbap',
+      name: '石鍋拌飯',
+      emoji: '🥗',
+      traits: { rice: 1, bowl: 1, veggie: 0.9, egg: 0.8, beef: 0.4, spicy: 0.4 },
+      vibes: { healthy: 0.4, social: -0.5 },
+    },
+    {
+      id: 'tteokbokki',
+      name: '辣炒年糕',
+      emoji: '🍢',
+      traits: { spicy: 1, sweet: 0.5, meatless: 0.6, nightMarket: 0.4 },
+      vibes: { heavy: 0.3, speed: 0.6 },
+      meals: ['lunch', 'dinner', 'tea', 'lateNight'],
+      priceLevel: 1,
+    },
+    {
+      id: 'sundubu',
+      name: '嫩豆腐鍋',
+      emoji: '🥘',
+      traits: { soup: 1, tofu: 1, spicy: 0.8, seafood: 0.6, bowl: 0.8 },
+      vibes: { warm: 1, heavy: 0.3, healthy: 0.3, social: -0.4 },
+    },
+    {
+      id: 'naengmyeon',
+      name: '韓式冷麵',
+      emoji: '🧊',
+      traits: { noodle: 1, cold: 1, soup: 0.7, sour: 0.6, spicy: 0.3, beef: 0.4, bowl: 1 },
+      vibes: { warm: -1, heavy: -0.3, healthy: 0.2, social: -0.4 },
+    },
+  ],
+})

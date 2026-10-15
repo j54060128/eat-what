@@ -1,0 +1,68 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'hotpot',
+    name: '火鍋',
+    emoji: '🍲',
+    blurb: '一鍋滾燙的湯，大家圍著邊煮邊聊。',
+    traits: { soup: 1, diy: 1, sharing: 0.8, veggie: 0.8, bowl: 0, taiwanese: 0.5, pricey: 0.6 },
+    vibes: { warm: 1, heavy: 0.6, comfort: 0.6, healthy: 0.2, speed: -0.8, social: 0.9 },
+    meals: ['lunch', 'dinner', 'lateNight'],
+    priceLevel: 2,
+  },
+  dishes: [
+    {
+      id: 'mala-hotpot',
+      name: '麻辣鍋',
+      emoji: '🌶️',
+      traits: {
+        spicy: 1,
+        chinese: 1,
+        taiwanese: 0.3,
+        tofu: 0.8,
+        beef: 0.5,
+        duck: 0.3,
+        pricey: 0.8,
+      },
+      vibes: { heavy: 0.8, healthy: -0.3 },
+      priceLevel: 3,
+    },
+    {
+      id: 'shabu-shabu',
+      name: '涮涮鍋',
+      emoji: '🍲',
+      traits: { japanese: 0.5, beef: 0.5, pork: 0.5, sharing: 0.3, pricey: 0.3 },
+      vibes: { healthy: 0.5, social: 0.2, comfort: 0.8 },
+    },
+    {
+      id: 'ginger-duck',
+      name: '薑母鴨',
+      emoji: '🦆',
+      traits: { duck: 1, taiwanese: 1, braised: 0.5, diy: 0.7 },
+      vibes: { heavy: 0.7 },
+    },
+    {
+      id: 'mutton-hotpot',
+      name: '羊肉爐',
+      emoji: '🐑',
+      traits: { lamb: 1, taiwanese: 1, braised: 0.5, diy: 0.7 },
+      vibes: { heavy: 0.7 },
+    },
+    {
+      id: 'sour-cabbage-hotpot',
+      name: '酸菜白肉鍋',
+      emoji: '🥬',
+      traits: { sour: 1, pork: 1, chinese: 0.7, taiwanese: 0.3 },
+      vibes: { comfort: 0.3 },
+    },
+    {
+      id: 'sukiyaki',
+      name: '壽喜燒',
+      emoji: '🥩',
+      traits: { japanese: 1, taiwanese: 0, sweet: 0.7, beef: 1, egg: 0.8, soup: 0.6, pricey: 0.8 },
+      vibes: { comfort: 0, healthy: -0.2 },
+      priceLevel: 3,
+    },
+  ],
+})

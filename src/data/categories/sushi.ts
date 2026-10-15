@@ -1,0 +1,71 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'sushi',
+    name: '壽司・生魚片',
+    emoji: '🍣',
+    blurb: '新鮮海味配上醋飯，入口即化的幸福。',
+    traits: {
+      japanese: 1,
+      rice: 0.8,
+      raw: 1,
+      seafood: 1,
+      fish: 0.8,
+      cold: 0.7,
+      bowl: 0,
+      sharing: 0.4,
+      pricey: 0.6,
+    },
+    vibes: { warm: -0.6, heavy: -0.2, comfort: -0.1, healthy: 0.5, speed: 0.3, social: 0.2 },
+    meals: ['lunch', 'dinner'],
+    priceLevel: 3,
+  },
+  dishes: [
+    {
+      id: 'nigiri',
+      name: '握壽司',
+      emoji: '🍣',
+      traits: { handheld: 0.6 },
+    },
+    {
+      id: 'aburi-sushi',
+      name: '炙燒壽司',
+      emoji: '🔥',
+      traits: { grilled: 1, raw: 0.4, handheld: 0.6 },
+      vibes: { warm: -0.2 },
+    },
+    {
+      id: 'kaisendon',
+      name: '海鮮丼',
+      emoji: '🐟',
+      traits: { rice: 1, bowl: 1, sharing: 0 },
+      vibes: { heavy: 0.3, social: -0.5 },
+    },
+    {
+      id: 'sashimi',
+      name: '生魚片',
+      emoji: '🐠',
+      traits: { rice: 0, sharing: 0.7 },
+      vibes: { heavy: -0.6, healthy: 0.8 },
+    },
+    {
+      id: 'inari-sushi',
+      name: '豆皮壽司',
+      emoji: '🍙',
+      traits: {
+        raw: 0,
+        seafood: 0,
+        fish: 0,
+        tofu: 1,
+        sweet: 0.6,
+        meatless: 1,
+        cold: 0.5,
+        handheld: 0.8,
+        pricey: 0,
+      },
+      vibes: { comfort: 0.5, speed: 0.8 },
+      priceLevel: 1,
+    },
+  ],
+})

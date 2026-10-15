@@ -1,0 +1,64 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'bbq',
+    name: '燒烤',
+    emoji: '🥩',
+    blurb: '炭火滋滋作響，肉香就是最好的開胃菜。',
+    traits: { grilled: 1, sharing: 0.7, bowl: 0, pricey: 0.6 },
+    vibes: { warm: 0.7, heavy: 0.9, comfort: 0.1, healthy: -0.5, speed: -0.6, social: 0.9 },
+    meals: ['dinner', 'lateNight'],
+    priceLevel: 3,
+  },
+  dishes: [
+    {
+      id: 'yakiniku',
+      name: '日式燒肉',
+      emoji: '🥩',
+      traits: { japanese: 1, diy: 1, beef: 1, pork: 0.5, pricey: 0.9 },
+    },
+    {
+      id: 'korean-bbq',
+      name: '韓式烤肉',
+      emoji: '🥓',
+      traits: { korean: 1, diy: 1, pork: 1, veggie: 0.6, spicy: 0.3 },
+      vibes: { comfort: -0.3 },
+      mapKeyword: '韓式烤肉',
+    },
+    {
+      id: 'teppanyaki',
+      name: '鐵板燒',
+      emoji: '🍳',
+      traits: { taiwanese: 0.6, japanese: 0.4, beef: 0.5, seafood: 0.6, veggie: 0.5, sharing: 0.2 },
+      vibes: { speed: 0, social: 0, comfort: 0.5 },
+      priceLevel: 2,
+    },
+    {
+      id: 'yakitori',
+      name: '串燒',
+      emoji: '🍢',
+      traits: { japanese: 1, skewer: 1, chicken: 0.8, pricey: 0.5 },
+      vibes: { heavy: 0.5 },
+      mapKeyword: '串燒 居酒屋',
+    },
+    {
+      id: 'tw-grill-skewers',
+      name: '炭烤串（夜市烤肉）',
+      emoji: '🌽',
+      traits: {
+        taiwanese: 1,
+        nightMarket: 1,
+        skewer: 1,
+        sweet: 0.3,
+        pork: 0.5,
+        pricey: 0,
+        sharing: 0.4,
+      },
+      vibes: { comfort: 0.7, speed: 0.4, social: 0.3 },
+      meals: ['tea', 'dinner', 'lateNight'],
+      priceLevel: 1,
+      mapKeyword: '炭烤',
+    },
+  ],
+})

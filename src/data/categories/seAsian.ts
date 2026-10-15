@@ -1,0 +1,76 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'se-asian',
+    name: '東南亞・南洋',
+    emoji: '🌴',
+    blurb: '酸、辣、香料一次到位，來趟味蕾小旅行。',
+    traits: { seAsian: 1, spicy: 0.5, sour: 0.4 },
+    vibes: { warm: 0.5, heavy: 0.3, comfort: -0.6, healthy: 0.1, speed: 0.3, social: 0.2 },
+    meals: ['lunch', 'dinner'],
+    priceLevel: 2,
+  },
+  dishes: [
+    {
+      id: 'pad-krapow',
+      name: '打拋豬飯',
+      emoji: '🍛',
+      traits: { rice: 1, pork: 1, stirFried: 1, spicy: 0.8, egg: 0.6, sour: 0 },
+      vibes: { heavy: 0.6, speed: 0.7, social: -0.4 },
+      priceLevel: 1,
+    },
+    {
+      id: 'tom-yum',
+      name: '泰式酸辣湯',
+      emoji: '🍤',
+      traits: { soup: 1, sour: 1, spicy: 1, seafood: 1, bowl: 0.6 },
+      vibes: { warm: 0.9, heavy: 0, social: 0.5 },
+      mapKeyword: '泰式料理',
+    },
+    {
+      id: 'pho',
+      name: '越南河粉',
+      emoji: '🍜',
+      traits: { noodle: 1, soup: 1, beef: 1, bowl: 1, spicy: 0.1, sour: 0.3 },
+      vibes: { warm: 0.8, heavy: 0, healthy: 0.5, social: -0.5 },
+    },
+    {
+      id: 'banh-mi',
+      name: '越南法國麵包',
+      emoji: '🥖',
+      traits: { dough: 1, handheld: 1, pork: 0.8, veggie: 0.6, spicy: 0.2, sour: 0.3, bowl: 0 },
+      vibes: { warm: 0, speed: 1, social: -0.6 },
+      meals: ['breakfast', 'lunch', 'dinner', 'tea'],
+      priceLevel: 1,
+    },
+    {
+      id: 'hainan-chicken-rice',
+      name: '海南雞飯',
+      emoji: '🐔',
+      traits: { rice: 1, chicken: 1, steamed: 0.8, spicy: 0.2, sour: 0 },
+      vibes: { heavy: 0.4, comfort: 0, healthy: 0.3, social: -0.5 },
+    },
+    {
+      id: 'laksa',
+      name: '叻沙',
+      emoji: '🍲',
+      traits: { noodle: 1, soup: 1, curry: 0.7, seafood: 0.8, spicy: 0.8, creamy: 0.3, bowl: 1 },
+      vibes: { warm: 0.9, heavy: 0.6, social: -0.4 },
+    },
+    {
+      id: 'indian-curry',
+      name: '印度咖哩',
+      emoji: '🫓',
+      traits: { curry: 1, rice: 0.6, dough: 0.5, chicken: 0.6, creamy: 0.5, spicy: 0.6, sour: 0 },
+      vibes: { heavy: 0.8 },
+    },
+    {
+      id: 'shrimp-cake',
+      name: '月亮蝦餅',
+      emoji: '🌕',
+      traits: { fried: 1, seafood: 1, sharing: 0.8, sweet: 0.3, spicy: 0, sour: 0.2, bowl: 0 },
+      vibes: { healthy: -0.6, social: 0.8 },
+    },
+  ],
+})

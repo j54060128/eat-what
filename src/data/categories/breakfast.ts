@@ -1,0 +1,66 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'breakfast',
+    name: '台式早餐',
+    emoji: '🥪',
+    blurb: '「美女，今天一樣嗎？」早餐店的元氣開場。',
+    traits: { breakfast: 1, taiwanese: 0.8, handheld: 0.5, bowl: 0.1, pricey: 0 },
+    vibes: { warm: 0.5, heavy: 0.2, comfort: 0.8, healthy: 0, speed: 0.9, social: -0.5 },
+    meals: ['breakfast'],
+    priceLevel: 1,
+  },
+  dishes: [
+    {
+      id: 'egg-crepe',
+      name: '蛋餅',
+      emoji: '🌯',
+      traits: { egg: 1, dough: 1, grilled: 1, handheld: 0.3 },
+    },
+    {
+      id: 'turnip-cake',
+      name: '蘿蔔糕',
+      emoji: '🧈',
+      traits: { grilled: 1, meatless: 0.6, egg: 0.3, handheld: 0 },
+      meals: ['breakfast', 'tea'],
+    },
+    {
+      id: 'iron-plate-noodle',
+      name: '鐵板麵',
+      emoji: '🍝',
+      traits: { noodle: 1, egg: 0.6, grilled: 0.5, stirFried: 0.4, spicy: 0.3, handheld: 0 },
+      vibes: { heavy: 0.6 },
+    },
+    {
+      id: 'sandwich',
+      name: '三明治',
+      emoji: '🥪',
+      traits: { dough: 1, egg: 0.7, cold: 0.5, handheld: 1, western: 0.4, pork: 0.5 },
+      vibes: { warm: -0.2, heavy: 0 },
+      meals: ['breakfast', 'lunch', 'tea'],
+    },
+    {
+      id: 'rice-ball',
+      name: '飯糰',
+      emoji: '🍙',
+      traits: { rice: 1, glutinous: 1, handheld: 1, pork: 0.6, fried: 0.5 },
+      vibes: { heavy: 0.7 },
+    },
+    {
+      id: 'shaobing-youtiao',
+      name: '燒餅油條',
+      emoji: '🥖',
+      traits: { dough: 1, fried: 1, grilled: 0.7, handheld: 1, meatless: 0.8, chinese: 0.5 },
+      vibes: { heavy: 0.4, healthy: -0.4 },
+      mapKeyword: '燒餅油條 豆漿店',
+    },
+    {
+      id: 'mantou-egg',
+      name: '饅頭夾蛋',
+      emoji: '🥚',
+      traits: { dough: 1, steamed: 1, egg: 1, handheld: 1 },
+      vibes: { heavy: 0.3 },
+    },
+  ],
+})
