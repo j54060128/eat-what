@@ -1,0 +1,29 @@
+name: 建議新增料理
+description: 神燈猜不到你想的料理？告訴我們吧！
+title: '[新料理] '
+labels: ['新料理']
+body:
+  - type: markdown
+    attributes:
+      value: 謝謝你幫神燈長知識！填好後我們會評估是否加入料理清單。
+  - type: input
+    id: dish
+    attributes:
+      label: 料理名稱
+      placeholder: 例如：鹹水雞
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: 你覺得它屬於哪一類？
+      placeholder: 例如：夜市小吃
+  - type: textarea
+    id: features
+    attributes:
+      label: 它有什麼特色？
+      description: 例如：冷的、主要是雞肉、夜市常見、會加辣……寫越多越容易讓神燈猜中
+  - type: textarea
+    id: missed
+    attributes:
+      label: 神燈這次猜成了什麼？（可不填）

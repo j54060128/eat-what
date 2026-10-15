@@ -42,7 +42,7 @@ const mood = computed<GenieMood>(() => {
 
 /** 對上一個回答的反應（猜錯類型或料理時） */
 const reaction = computed(() => {
-  const last = game.events.at(-1)
+  const last = game.events[game.events.length - 1]
   if (last?.type === 'category' && !last.correct) return '咦？不是這類嗎……'
   if (last?.type === 'dish' && !last.correct) return '可惡，猜錯了！再讓我問幾題……'
   return null

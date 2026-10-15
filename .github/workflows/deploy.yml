@@ -1,0 +1,59 @@
+# push 到 main 後自動檢查、測試、建置並部署到 GitHub Pages
+# 第一次使用前：GitHub repo → Settings → Pages → Build and deployment → Source 選「GitHub Actions」
+name: 部署到 GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run ci:lint
+
+      - name: 單元測試（含資料完整性與模擬玩家）
+        run: npm test
+
+      - name: 建置
+        run: npm run build
+        env:
+          # <帳號>.github.io 這種 repo 部署在根目錄，其他 repo 部署在 /<repo名>/
+          BASE_PATH: ${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}
+          VITE_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
