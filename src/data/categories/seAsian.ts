@@ -61,7 +61,7 @@ export default defineCategory({
     {
       id: 'indian-curry',
       name: '印度咖哩',
-      emoji: '🫓',
+      emoji: '🍛',
       traits: { curry: 1, rice: 0.6, dough: 0.5, chicken: 0.6, creamy: 0.5, spicy: 0.6, sour: 0 },
       vibes: { heavy: 0.8 },
     },

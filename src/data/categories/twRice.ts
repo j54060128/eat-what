@@ -35,7 +35,7 @@ export default defineCategory({
     {
       id: 'zongzi',
       name: '肉粽',
-      emoji: '🫔',
+      emoji: '🍃',
       traits: { glutinous: 1, filled: 1, steamed: 1, pork: 0.8, egg: 0.3, bowl: 0, handheld: 0.7 },
       vibes: { heavy: 0.8 },
     },

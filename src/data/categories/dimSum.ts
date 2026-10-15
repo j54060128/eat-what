@@ -47,7 +47,7 @@ export default defineCategory({
     {
       id: 'baozi',
       name: '包子',
-      emoji: '🫓',
+      emoji: '🍞',
       traits: { steamed: 1, breakfast: 0.8, handheld: 1, pork: 0.6, sharing: 0 },
       vibes: { speed: 1, social: -0.5 },
       priceLevel: 1,

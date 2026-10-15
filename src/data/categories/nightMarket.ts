@@ -58,7 +58,7 @@ export default defineCategory({
     {
       id: 'scallion-pancake',
       name: '蔥油餅',
-      emoji: '🫓',
+      emoji: '🥞',
       traits: {
         dough: 1,
         grilled: 1,

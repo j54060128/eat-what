@@ -61,7 +61,7 @@ export default defineCategory({
     {
       id: 'bubble-tea',
       name: '珍珠奶茶',
-      emoji: '🧋',
+      emoji: '🥤',
       traits: { cold: 0.8, creamy: 0.8, taiwanese: 1, handheld: 1, bowl: 0 },
       vibes: { warm: -0.6, speed: 1, social: 0 },
       meals: ['lunch', 'tea', 'dinner', 'lateNight'],
