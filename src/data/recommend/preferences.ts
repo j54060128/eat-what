@@ -99,6 +99,28 @@ export const PREFERENCE_QUESTIONS: PreferenceQuestion[] = [
     no: '蔬菜少一點',
     source: { trait: 'veggie' },
   },
+  { id: 'fruit', text: '想吃點水果嗎？', yes: '水果', no: '不要水果', source: { trait: 'fruit' } },
+  {
+    id: 'offal',
+    text: '想吃大腸、豬血這類內臟嗎？',
+    yes: '內臟',
+    no: '不要內臟',
+    source: { trait: 'offal' },
+  },
+  {
+    id: 'chewy',
+    text: '想吃 QQ 有嚼勁的嗎？',
+    yes: 'QQ 口感',
+    no: '不要 QQ',
+    source: { trait: 'chewy' },
+  },
+  {
+    id: 'drink',
+    text: '想喝點飲料就好嗎？',
+    yes: '喝飲料',
+    no: '不要飲料',
+    source: { trait: 'drink' },
+  },
 
   // ── 菜系 ──
   {

@@ -54,7 +54,7 @@ const modes = [
     </nav>
 
     <p class="mt-10 text-center text-xs text-ink-muted/80">
-      神燈目前認得 {{ CATEGORIES.length }} 種類型、{{ DISHES.length }} 道台灣日常料理
+      神燈目前認得 {{ CATEGORIES.length }} 種類型、{{ DISHES.length }} 道料理
     </p>
   </main>
 </template>
