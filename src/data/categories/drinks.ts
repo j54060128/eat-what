@@ -1,0 +1,76 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'drinks',
+    name: '手搖飲・咖啡',
+    emoji: '🥤',
+    blurb: '來一杯續命，手搖飲是台灣人的日常。',
+    traits: {
+      drink: 1,
+      handheld: 1,
+      cold: 0.8,
+      sweet: 0.6,
+      meatless: 1,
+      taiwanese: 0.8,
+      veggie: 0,
+      bowl: 0,
+      pricey: 0,
+    },
+    vibes: { warm: -0.6, heavy: -0.6, comfort: 0.6, healthy: -0.3, speed: 1, social: -0.2 },
+    meals: ['tea', 'lateNight'],
+    priceLevel: 1,
+  },
+  dishes: [
+    {
+      id: 'bubble-tea',
+      name: '珍珠奶茶',
+      emoji: '🥤',
+      traits: { tea: 1, creamy: 0.8, chewy: 1, sweet: 0.9 },
+      vibes: { heavy: -0.2 },
+    },
+    {
+      id: 'fresh-milk-tea',
+      name: '鮮奶茶',
+      emoji: '🥛',
+      traits: { tea: 1, creamy: 1, chewy: 0 },
+    },
+    {
+      id: 'fruit-tea',
+      name: '水果茶',
+      emoji: '🍹',
+      traits: { tea: 1, fruit: 1, sour: 0.5, creamy: 0 },
+      vibes: { healthy: 0 },
+    },
+    {
+      id: 'winter-melon-lemon',
+      name: '冬瓜檸檬',
+      emoji: '🍋',
+      traits: { tea: 0, fruit: 0.7, sour: 0.7, sweet: 1, creamy: 0 },
+    },
+    {
+      id: 'latte',
+      name: '拿鐵',
+      emoji: '☕',
+      traits: { coffee: 1, creamy: 1, sweet: 0.2, tea: 0, taiwanese: 0, western: 0.8, cold: 0.5 },
+      vibes: { warm: 0.2, comfort: 0.3 },
+      meals: ['breakfast', 'tea'],
+    },
+    {
+      id: 'smoothie',
+      name: '果汁・冰沙',
+      emoji: '🧃',
+      traits: { fruit: 1, cold: 1, tea: 0, creamy: 0.3 },
+      vibes: { warm: -1, healthy: 0.3 },
+      mapKeyword: '果汁',
+    },
+    {
+      id: 'hk-milk-tea',
+      name: '港式奶茶',
+      emoji: '🍵',
+      traits: { tea: 1, creamy: 1, chinese: 1, taiwanese: 0, sweet: 0.5, cold: 0.5 },
+      vibes: { warm: 0 },
+      meals: ['breakfast', 'tea', 'lateNight'],
+    },
+  ],
+})

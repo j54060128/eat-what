@@ -45,6 +45,7 @@ export default defineCategory({
       name: '肉圓',
       emoji: '🥟',
       traits: {
+        chewy: 1,
         filled: 1,
         pork: 1,
         steamed: 0.5,
@@ -89,7 +90,7 @@ export default defineCategory({
       id: 'sausage-sticky-rice',
       name: '大腸包小腸',
       emoji: '🌭',
-      traits: { pork: 1, grilled: 1, glutinous: 1, handheld: 1, skewer: 0.4 },
+      traits: { chewy: 0.5, pork: 1, grilled: 1, glutinous: 1, handheld: 1, skewer: 0.4 },
       vibes: { heavy: 0.7 },
     },
     {
@@ -97,6 +98,7 @@ export default defineCategory({
       name: '滷味',
       emoji: '🥢',
       traits: {
+        offal: 0.5,
         braised: 1,
         tofu: 0.6,
         veggie: 0.6,
@@ -106,6 +108,41 @@ export default defineCategory({
         bowl: 0.5,
       },
       vibes: { healthy: -0.2, comfort: 0.9, social: 0.5 },
+    },
+    {
+      id: 'salty-chicken',
+      name: '鹹水雞',
+      emoji: '🐔',
+      traits: { chicken: 1, cold: 1, veggie: 0.7, handheld: 0, bowl: 0.3 },
+      vibes: { warm: -0.6, healthy: 0.3 },
+    },
+    {
+      id: 'tempura-fishcake',
+      name: '甜不辣',
+      emoji: '🍢',
+      traits: { fried: 1, seafood: 0.7, chewy: 0.7, sweet: 0.4, handheld: 0, bowl: 0.6 },
+    },
+    {
+      id: 'pig-blood-cake',
+      name: '豬血糕',
+      emoji: '🍡',
+      traits: {
+        offal: 1,
+        glutinous: 1,
+        chewy: 1,
+        skewer: 1,
+        steamed: 1,
+        sweet: 0.4,
+        pork: 0.3,
+        handheld: 1,
+      },
+    },
+    {
+      id: 'grilled-squid',
+      name: '烤魷魚',
+      emoji: '🦑',
+      traits: { seafood: 1, grilled: 1, skewer: 0.8, chewy: 0.8, handheld: 1 },
+      vibes: { heavy: 0.4 },
     },
   ],
 })

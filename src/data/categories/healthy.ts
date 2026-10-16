@@ -52,5 +52,19 @@ export default defineCategory({
       meals: ['lunch', 'dinner', 'tea'],
       priceLevel: 1,
     },
+    {
+      id: 'grain-bowl',
+      name: '穀物碗',
+      emoji: '🥗',
+      traits: { rice: 0.6, bowl: 1, chicken: 0.5, egg: 0.5, cold: 0.4, western: 0.6, boxed: 0 },
+      vibes: { heavy: -0.2, comfort: -0.4 },
+    },
+    {
+      id: 'veggie-curry',
+      name: '蔬食咖哩',
+      emoji: '🍛',
+      traits: { curry: 1, meatless: 1, rice: 1, japanese: 0.3, boxed: 0 },
+      vibes: { warm: 0.6, heavy: 0, comfort: 0.4 },
+    },
   ],
 })

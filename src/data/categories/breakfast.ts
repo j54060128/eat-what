@@ -62,5 +62,12 @@ export default defineCategory({
       traits: { dough: 1, steamed: 1, egg: 1, handheld: 1 },
       vibes: { heavy: 0.3 },
     },
+    {
+      id: 'scallion-flatbread',
+      name: '蔥抓餅',
+      emoji: '🥞',
+      traits: { dough: 1, grilled: 1, fried: 0.6, egg: 0.5, handheld: 1, meatless: 0.6 },
+      vibes: { heavy: 0.4 },
+    },
   ],
 })

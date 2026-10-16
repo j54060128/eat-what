@@ -5,10 +5,13 @@ import type { Category, CategoryModule, Dish, ResolvedDish } from './types'
 import twRice from './categories/twRice'
 import bento from './categories/bento'
 import twNoodle from './categories/twNoodle'
+import soupCongee from './categories/soupCongee'
 import nightMarket from './categories/nightMarket'
 import breakfast from './categories/breakfast'
 import stirFry from './categories/stirFry'
+import hakka from './categories/hakka'
 import dimSum from './categories/dimSum'
+import hkCafe from './categories/hkCafe'
 import ramen from './categories/ramen'
 import donburi from './categories/donburi'
 import sushi from './categories/sushi'
@@ -16,20 +19,28 @@ import hotpot from './categories/hotpot'
 import bbq from './categories/bbq'
 import korean from './categories/korean'
 import seAsian from './categories/seAsian'
+import indianMideast from './categories/indianMideast'
 import fastFood from './categories/fastFood'
+import american from './categories/american'
 import western from './categories/western'
+import brunch from './categories/brunch'
 import healthy from './categories/healthy'
+import bakery from './categories/bakery'
 import dessert from './categories/dessert'
+import drinks from './categories/drinks'
 
 /** 新增類型時：在 categories/ 建一個檔案，再加進這個陣列 */
 export const CATEGORY_MODULES: CategoryModule[] = [
   twRice,
   bento,
   twNoodle,
+  soupCongee,
   nightMarket,
   breakfast,
   stirFry,
+  hakka,
   dimSum,
+  hkCafe,
   ramen,
   donburi,
   sushi,
@@ -37,10 +48,15 @@ export const CATEGORY_MODULES: CategoryModule[] = [
   bbq,
   korean,
   seAsian,
+  indianMideast,
   fastFood,
+  american,
   western,
+  brunch,
   healthy,
+  bakery,
   dessert,
+  drinks,
 ]
 
 export const CATEGORIES: Category[] = CATEGORY_MODULES.map((m) => m.category)

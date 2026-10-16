@@ -55,7 +55,7 @@ describe('模擬玩家（品質門檻）', () => {
       failed.length ? `\n未猜中：${failed.join(', ')}` : '',
     )
     expect(success.length / results.length).toBeGreaterThanOrEqual(0.95)
-  })
+  }, 60_000)
 
   it('有雜訊玩家（10% 答錯）：成功率 ≥ 80%（含從清單挑中）', () => {
     let total = 0
@@ -69,5 +69,5 @@ describe('模擬玩家（品質門檻）', () => {
     }
     console.info(`雜訊玩家：${ok}/${total} 成功（${((ok / total) * 100).toFixed(1)}%）`)
     expect(ok / total).toBeGreaterThanOrEqual(0.8)
-  })
+  }, 60_000)
 })

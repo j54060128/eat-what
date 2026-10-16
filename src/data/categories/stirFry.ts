@@ -39,18 +39,25 @@ export default defineCategory({
       traits: { tofu: 1, spicy: 1, pork: 0.6, chinese: 1, rice: 0.5, taiwanese: 0.4 },
     },
     {
-      id: 'hakka-stir-fry',
-      name: '客家小炒',
-      emoji: '🦑',
-      traits: { pork: 0.8, seafood: 0.6, tofu: 0.7, taiwanese: 1 },
-    },
-    {
       id: 'stir-fried-greens',
       name: '炒青菜',
       emoji: '🥬',
       traits: { veggie: 1, meatless: 1 },
       vibes: { heavy: -0.6, healthy: 0.9 },
       mapKeyword: '熱炒',
+    },
+    {
+      id: 'fly-head',
+      name: '蒼蠅頭',
+      emoji: '🌶️',
+      traits: { pork: 1, spicy: 0.8, veggie: 0.6, taiwanese: 1 },
+    },
+    {
+      id: 'pineapple-shrimp',
+      name: '鳳梨蝦球',
+      emoji: '🍍',
+      traits: { seafood: 1, fried: 1, sweet: 0.8, fruit: 1, creamy: 0.6 },
+      vibes: { healthy: -0.5 },
     },
   ],
 })

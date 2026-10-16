@@ -36,9 +36,9 @@ export interface RecommendConfig {
 }
 
 export const DEFAULT_RECOMMEND_CONFIG: RecommendConfig = {
-  epsilon: 0.08,
+  epsilon: 0.12,
   minQuestions: 3,
-  maxQuestions: 10,
+  maxQuestions: 12,
   topThreshold: 0.3,
   top3Threshold: 0.65,
   minGain: 0.02,

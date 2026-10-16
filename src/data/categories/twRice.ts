@@ -29,7 +29,7 @@ export default defineCategory({
       id: 'tube-rice-pudding',
       name: '筒仔米糕',
       emoji: '🍘',
-      traits: { glutinous: 1, steamed: 1, pork: 0.8, braised: 0.5, bowl: 0.3 },
+      traits: { chewy: 0.5, glutinous: 1, steamed: 1, pork: 0.8, braised: 0.5, bowl: 0.3 },
       vibes: { heavy: 0.8 },
     },
     {
@@ -38,14 +38,6 @@ export default defineCategory({
       emoji: '🍃',
       traits: { glutinous: 1, filled: 1, steamed: 1, pork: 0.8, egg: 0.3, bowl: 0, handheld: 0.7 },
       vibes: { heavy: 0.8 },
-    },
-    {
-      id: 'savory-congee',
-      name: '鹹粥',
-      emoji: '🥣',
-      traits: { soup: 1, seafood: 0.7, pork: 0.4, braised: 0, bowl: 1, breakfast: 0.6 },
-      vibes: { warm: 0.9, heavy: -0.2, healthy: 0.3 },
-      meals: ['breakfast', 'lunch', 'dinner', 'lateNight'],
     },
     {
       id: 'rice-bowl-cake',
@@ -62,6 +54,13 @@ export default defineCategory({
       },
       vibes: { heavy: 0.2 },
       meals: ['breakfast', 'lunch', 'dinner', 'tea'],
+    },
+    {
+      id: 'pork-knuckle-rice',
+      name: '豬腳飯',
+      emoji: '🐷',
+      traits: { pork: 1, braised: 1, chewy: 0.8, bowl: 0.3 },
+      vibes: { heavy: 0.9, healthy: -0.5 },
     },
   ],
 })

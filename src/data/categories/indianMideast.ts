@@ -1,0 +1,82 @@
+import { defineCategory } from '../types'
+
+export default defineCategory({
+  category: {
+    id: 'indian-mideast',
+    name: '印度・中東',
+    emoji: '🧆',
+    blurb: '濃郁香料與烤餅，換個國度吃一餐。',
+    traits: { spicy: 0.5, pricey: 0.4 },
+    vibes: { warm: 0.6, heavy: 0.6, comfort: -0.8, healthy: 0, speed: 0.2, social: 0.2 },
+    meals: ['lunch', 'dinner'],
+    priceLevel: 2,
+  },
+  dishes: [
+    {
+      id: 'indian-curry',
+      name: '印度咖哩',
+      emoji: '🍛',
+      traits: {
+        seAsian: 1,
+        curry: 1,
+        rice: 0.6,
+        dough: 0.5,
+        chicken: 0.6,
+        creamy: 0.5,
+        spicy: 0.6,
+      },
+      vibes: { heavy: 0.8 },
+    },
+    {
+      id: 'tandoori-chicken',
+      name: '坦都里烤雞',
+      emoji: '🍗',
+      traits: { seAsian: 1, chicken: 1, grilled: 1, spicy: 0.6, curry: 0.3 },
+    },
+    {
+      id: 'naan',
+      name: '印度烤餅',
+      emoji: '🥙',
+      traits: {
+        seAsian: 1,
+        dough: 1,
+        grilled: 1,
+        meatless: 0.8,
+        creamy: 0.5,
+        curry: 0.3,
+        spicy: 0.1,
+      },
+      vibes: { heavy: 0.3 },
+    },
+    {
+      id: 'biryani',
+      name: '印度香料飯',
+      emoji: '🍚',
+      traits: { seAsian: 1, rice: 1, chicken: 0.5, lamb: 0.4, spicy: 0.5, curry: 0.4 },
+    },
+    {
+      id: 'shawarma',
+      name: '沙威瑪',
+      emoji: '🌯',
+      traits: {
+        dough: 1,
+        handheld: 1,
+        chicken: 0.6,
+        grilled: 1,
+        sour: 0.3,
+        veggie: 0.5,
+        spicy: 0.2,
+      },
+      vibes: { speed: 0.8, social: -0.4 },
+      priceLevel: 1,
+    },
+    {
+      id: 'hummus-falafel',
+      name: '鷹嘴豆泥・法拉費',
+      emoji: '🧆',
+      traits: { meatless: 1, fried: 0.5, veggie: 0.6, dough: 0.5, spicy: 0.1 },
+      vibes: { heavy: 0, healthy: 0.5 },
+      mapKeyword: '中東料理',
+    },
+  ],
+})

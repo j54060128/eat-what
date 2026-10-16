@@ -56,5 +56,19 @@ export default defineCategory({
       traits: { fried: 1, seafood: 1, veggie: 0.4 },
       vibes: { healthy: -0.5 },
     },
+    {
+      id: 'karaage-teishoku',
+      name: '唐揚雞定食',
+      emoji: '🍗',
+      traits: { chicken: 1, fried: 1, bowl: 0, egg: 0 },
+      vibes: { heavy: 0.8, healthy: -0.4 },
+    },
+    {
+      id: 'salmon-teishoku',
+      name: '鮭魚定食',
+      emoji: '🐟',
+      traits: { fish: 1, seafood: 1, grilled: 1, bowl: 0, egg: 0 },
+      vibes: { heavy: 0.3, healthy: 0.4 },
+    },
   ],
 })

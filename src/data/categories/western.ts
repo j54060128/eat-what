@@ -55,5 +55,19 @@ export default defineCategory({
       vibes: { heavy: 0.9, warm: 0.8, comfort: 0.4 },
       mapKeyword: '焗烤',
     },
+    {
+      id: 'lasagna',
+      name: '千層麵',
+      emoji: '🍝',
+      traits: { noodle: 0.6, cheese: 1, tomato: 1, beef: 0.8, grilled: 0.8 },
+      vibes: { heavy: 1, comfort: 0.3 },
+    },
+    {
+      id: 'hamburg-steak',
+      name: '漢堡排',
+      emoji: '🍔',
+      traits: { beef: 0.8, pork: 0.5, grilled: 1, rice: 0.5, egg: 0.5, japanese: 0.4, pricey: 0.3 },
+      vibes: { heavy: 0.8, comfort: 0.4 },
+    },
   ],
 })

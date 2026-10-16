@@ -46,6 +46,7 @@ export const TRAITS = [
   { id: 'starchy', question: '湯汁是勾芡、黏稠的嗎？', default: 0 },
   { id: 'richBroth', question: '湯頭是濃郁白濁的嗎？', default: 0 },
   { id: 'miso', question: '是味噌口味的嗎？', default: 0 },
+  { id: 'chewy', question: '口感 QQ、有嚼勁嗎？', default: 0 },
 
   // ── 食材 ──
   { id: 'beef', question: '主要的肉是牛肉嗎？', default: 0 },
@@ -59,6 +60,13 @@ export const TRAITS = [
   { id: 'tofu', question: '有豆腐或豆製品嗎？', default: 0 },
   { id: 'meatless', question: '它通常是不含肉的嗎？', default: 0 },
   { id: 'veggie', question: '蔬菜的份量很多嗎？', default: 0.2 },
+  { id: 'fruit', question: '有用到水果嗎？', default: 0 },
+  { id: 'offal', question: '有內臟類的食材嗎？（大腸、豬血…）', default: 0 },
+
+  // ── 飲料 ──
+  { id: 'drink', question: '它是飲料嗎？', default: 0 },
+  { id: 'tea', question: '是茶飲嗎？', default: 0 },
+  { id: 'coffee', question: '有咖啡嗎？', default: 0 },
 
   // ── 情境 ──
   { id: 'breakfast', question: '早餐時段常吃到它嗎？', default: 0 },
