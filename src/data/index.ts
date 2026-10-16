@@ -49,8 +49,6 @@ export const RAW_DISHES: Dish[] = CATEGORY_MODULES.flatMap((m) =>
   m.dishes.map((d) => ({ ...d, categoryId: m.category.id })),
 )
 
-const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v))
-
 /** 解析繼承：特徵預設值 → 類型 → 料理覆寫 */
 export function resolveDish(dish: Dish, category: Category): ResolvedDish {
   const traits = {} as Record<TraitId, number>
@@ -61,10 +59,6 @@ export function resolveDish(dish: Dish, category: Category): ResolvedDish {
   const vibes: VibeVector = zeroVibes()
   for (const id of VIBE_IDS) {
     vibes[id] = dish.vibes?.[id] ?? category.vibes[id] ?? 0
-  }
-  // 辣度的 vibe 沒特別寫的話，直接由「辣」特徵換算（0~1 → -1~1）
-  if (dish.vibes?.spicy === undefined && category.vibes.spicy === undefined) {
-    vibes.spicy = clamp(traits.spicy * 2 - 1, -1, 1)
   }
 
   return {

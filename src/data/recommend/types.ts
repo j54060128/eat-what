@@ -1,5 +1,5 @@
-import type { TraitMap } from '../traits'
-import type { VibeMap } from '../vibes'
+import type { TraitId } from '../traits'
+import type { VibeId } from '../vibes'
 import type { Meal, PriceLevel } from '../types'
 
 /** 推薦模式的硬性篩選條件 */
@@ -13,36 +13,42 @@ export interface Filters {
   noSpicy: boolean
 }
 
-/** 選項對玩家「口味向量」的影響 */
-export interface Effect {
-  /** 情境維度的增量 */
-  vibes?: VibeMap
-  /** 對料理特徵的偏好（-1 ~ 1），例如 sweet: 1 代表想吃甜的 */
-  traits?: TraitMap
+/** 偏好題對應到料理的哪個值：客觀特徵，或情境維度（vibe） */
+export type PreferenceSource = { trait: TraitId } | { vibe: VibeId }
+
+/** 軟性證據：不篩掉料理，只調整機率（例如一大群人 → 偏好適合分享的） */
+export interface Evidence {
+  source: PreferenceSource
+  /** 期望的值（0~1） */
+  target: number
 }
 
 export interface ChoiceOption {
   emoji: string
   label: string
-  effect?: Effect
+  /** 結果頁「你的選擇」摘要用的短語；不填就不顯示 */
+  short?: string
   filter?: Partial<Filters>
+  evidence?: Evidence[]
   /** 多選題裡的「都可以」：選了它就清掉其他選項 */
   exclusive?: boolean
 }
 
-export interface RecommendQuestion {
+/** 情境題：每次都會問，負責硬性篩選 */
+export interface SituationalQuestion {
   id: string
-  kind: 'situational' | 'fun'
   text: string
   multi?: boolean
   options: ChoiceOption[]
 }
 
-export interface Persona {
+/** 偏好追問：由神燈依資訊增益挑選，回答「想／有點想／都可以／不太想／不想」 */
+export interface PreferenceQuestion {
   id: string
-  emoji: string
-  name: string
-  description: string
-  /** 人格的 vibe 原型，玩家向量和它越像就越可能是這個人格 */
-  prototype: VibeMap
+  text: string
+  /** 回答「想」時的摘要短語 */
+  yes: string
+  /** 回答「不想」時的摘要短語 */
+  no: string
+  source: PreferenceSource
 }

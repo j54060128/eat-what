@@ -2,6 +2,8 @@
 import { onKeyStroke } from '@vueuse/core'
 import { ANSWERS, type Answer } from '@/engine/guess/likelihood'
 
+// labels 可替換按鈕文字（推薦模式用「想／有點想／都可以／不太想／不想」）
+const props = defineProps<{ labels?: Record<Answer, string> }>()
 const emit = defineEmits<{ answer: [value: Answer] }>()
 
 // 每個回答的樣式：是／不是最醒目，「可能」次之，「不知道」最低調
@@ -30,7 +32,7 @@ onKeyStroke(['1', '2', '3', '4', '5'], (e) => {
       :class="styles[a.id]"
       @click="emit('answer', a.id)"
     >
-      {{ a.label }}
+      {{ props.labels?.[a.id] ?? a.label }}
       <kbd
         class="absolute top-1/2 right-4 hidden -translate-y-1/2 text-xs font-normal opacity-50 sm:inline"
         >{{ i + 1 }}</kbd

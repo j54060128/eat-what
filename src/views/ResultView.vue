@@ -4,35 +4,32 @@ import { RouterLink, useRoute, useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import GenieAvatar from '@/components/GenieAvatar.vue'
 import FoodCard from '@/components/FoodCard.vue'
-import PersonaCard from '@/components/PersonaCard.vue'
 import { DISHES } from '@/data'
-import { createRng, randomSeed } from '@/engine/random'
-import { buildProfile, decodeAnswers } from '@/engine/recommend/profile'
-import { recommend } from '@/engine/recommend/score'
+import { decodePreferences, decodeSituational } from '@/engine/recommend/answers'
+import { buildResult, deriveRecommendState } from '@/engine/recommend/session'
 import { useShareResult } from '@/composables/useShareResult'
 
 const route = useRoute()
 const router = useRouter()
 const { share, copied } = useShareResult()
 
-const answers = computed(() => decodeAnswers(String(route.query.a ?? '')))
-const profile = computed(() => buildProfile(answers.value))
+const input = computed(() => ({
+  situational: decodeSituational(String(route.query.a ?? '')),
+  prefs: decodePreferences(String(route.query.p ?? '')),
+}))
+const state = computed(() => deriveRecommendState(DISHES, input.value))
 const dishId = computed(() => (typeof route.query.d === 'string' ? route.query.d : undefined))
 
 /** 這次看過、按了「換一個」的料理 */
 const excluded = ref(new Set<string>())
 
 const result = computed(() =>
-  recommend(DISHES, profile.value, {
-    rng: createRng(randomSeed()),
-    dishId: dishId.value,
-    exclude: excluded.value,
-  }),
+  buildResult(state.value, input.value, { dishId: dishId.value, exclude: excluded.value }),
 )
 
-// 作答無效（例如網址被改壞）就回到測驗
+// 作答無效（例如網址被改壞）就回到推薦模式
 watch(
-  answers,
+  () => input.value.situational,
   (a) => {
     if (Object.keys(a).length === 0) router.replace({ name: 'recommend' })
   },
@@ -47,19 +44,16 @@ function reveal(delay: number) {
   clearTimeout(timer)
   timer = setTimeout(() => (revealed.value = true), delay)
 }
-onMounted(() => reveal(1200))
+onMounted(() => reveal(1000))
 onBeforeUnmount(() => clearTimeout(timer))
 
 function another() {
   if (!result.value) return
   excluded.value = new Set([...excluded.value, result.value.dish.id])
-  const next = recommend(DISHES, profile.value, {
-    rng: createRng(randomSeed()),
-    exclude: excluded.value,
-  })
+  const next = buildResult(state.value, input.value, { exclude: excluded.value })
   if (!next) return
   router.replace({ query: { ...route.query, d: next.dish.id } })
-  reveal(500)
+  reveal(400)
 }
 
 const relaxNotice = computed(() => {
@@ -78,10 +72,7 @@ const relaxNotice = computed(() => {
 function shareResult() {
   const r = result.value
   if (!r) return
-  share(
-    `神燈說我現在是「${r.persona.name}」，今天該吃「${r.dish.name}」！你也來測測看 🧞`,
-    window.location.href,
-  )
+  share(`神燈幫我決定了：今天吃「${r.dish.name}」！你也讓神燈幫你選吧 🧞`, window.location.href)
 }
 </script>
 
@@ -100,7 +91,22 @@ function shareResult() {
       </div>
 
       <div v-else :key="result.dish.id" class="grid gap-5">
-        <PersonaCard :persona="result.persona" />
+        <section
+          v-if="result.summary.length"
+          class="rounded-3xl border border-mist-400/30 bg-night-800 px-5 py-4"
+          aria-label="你的選擇"
+        >
+          <p class="text-sm text-mist-300">你的選擇</p>
+          <ul class="mt-2.5 flex flex-wrap gap-2">
+            <li
+              v-for="s in result.summary"
+              :key="s"
+              class="rounded-full border border-white/10 px-3 py-1 text-sm text-ink"
+            >
+              {{ s }}
+            </li>
+          </ul>
+        </section>
 
         <section>
           <p class="mb-3 text-center text-ink-muted">
@@ -108,15 +114,18 @@ function shareResult() {
             <span class="text-ink">{{ result.category.emoji }} {{ result.category.name }}</span>
           </p>
           <FoodCard :dish="result.dish">
-            <ul class="mt-4 flex flex-wrap justify-center gap-2" aria-label="推薦理由">
-              <li
-                v-for="r in result.reasons"
-                :key="r"
-                class="rounded-full bg-white/8 px-3 py-1 text-sm text-ink-muted"
-              >
-                {{ r }}
-              </li>
-            </ul>
+            <div v-if="result.matched.length" class="mt-4">
+              <p class="text-xs text-ink-muted">符合你說的</p>
+              <ul class="mt-2 flex flex-wrap justify-center gap-2">
+                <li
+                  v-for="m in result.matched"
+                  :key="m"
+                  class="rounded-full bg-lamp-400/15 px-3 py-1 text-sm text-lamp-200"
+                >
+                  {{ m }}
+                </li>
+              </ul>
+            </div>
           </FoodCard>
           <p v-if="relaxNotice" class="mt-3 text-center text-xs text-ink-muted">
             {{ relaxNotice }}
@@ -155,7 +164,7 @@ function shareResult() {
             to="/recommend"
             class="rounded-2xl py-3 text-ink-muted transition hover:bg-white/5 hover:text-ink"
           >
-            重新測驗
+            重新來一次
           </RouterLink>
           <RouterLink
             to="/guess"

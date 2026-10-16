@@ -17,7 +17,7 @@ const modes = [
     emoji: '🍽️',
     title: '推薦模式',
     tagline: '不知道今天吃什麼？',
-    desc: '做一份美食心理測驗，讓神燈替你決定這一餐。',
+    desc: '回答幾個簡單問題，神燈幫你釐清現在想吃什麼。',
     accent: 'from-mist-400/25 to-transparent border-mist-400/40',
   },
 ]

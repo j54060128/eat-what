@@ -2,7 +2,7 @@ import { TRAIT_IDS, type TraitId } from '@/data/traits'
 import type { ResolvedDish } from '@/data/types'
 import { createRng } from '../random'
 import { answerTarget, likelihood, type Answer } from './likelihood'
-import { pickQuestion, rankQuestions } from './selectQuestion'
+import { pickQuestion, rankQuestions, traitValue } from './selectQuestion'
 
 /**
  * 猜謎模式的狀態機。
@@ -242,7 +242,14 @@ export function nextStep(
 
     const candidates = dishes.filter((d) => !state.rejectedCategoryIds.has(d.categoryId))
     const weights = candidates.map((d) => state.posterior[dishes.indexOf(d)]!)
-    const ranked = rankQuestions(candidates, weights, unasked, (d) => d.categoryId, config.epsilon)
+    const ranked = rankQuestions(
+      candidates,
+      weights,
+      unasked,
+      traitValue,
+      (d) => d.categoryId,
+      config.epsilon,
+    )
     const traitId = pickQuestion(ranked, rng, pickOptions)
     return traitId ? { kind: 'question', traitId, stage: 1 } : confirm
   }
@@ -274,7 +281,14 @@ export function nextStep(
     return guess
   }
 
-  const ranked = rankQuestions(candidates, weights, unasked, (d) => d.id, config.epsilon)
+  const ranked = rankQuestions(
+    candidates,
+    weights,
+    unasked,
+    traitValue,
+    (d) => d.id,
+    config.epsilon,
+  )
   const traitId = pickQuestion(ranked, rng, pickOptions)
   return traitId ? { kind: 'question', traitId, stage: 2 } : guess
 }
