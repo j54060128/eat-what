@@ -255,6 +255,12 @@ function shareWin() {
         >
           還是讓神燈推薦你吃什麼？
         </RouterLink>
+        <RouterLink
+          to="/dex"
+          class="rounded-2xl py-3 text-center text-ink-muted transition hover:bg-white/5 hover:text-ink"
+        >
+          📖 看看神燈認得哪些料理
+        </RouterLink>
       </div>
     </section>
 

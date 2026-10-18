@@ -13,6 +13,7 @@ const router = createRouter({
       component: () => import('@/views/RecommendView.vue'),
     },
     { path: '/result', name: 'result', component: () => import('@/views/ResultView.vue') },
+    { path: '/dex', name: 'dex', component: () => import('@/views/DexView.vue') },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
   scrollBehavior: () => ({ top: 0 }),

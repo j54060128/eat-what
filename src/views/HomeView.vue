@@ -53,8 +53,11 @@ const modes = [
       </RouterLink>
     </nav>
 
-    <p class="mt-10 text-center text-xs text-ink-muted/80">
-      神燈目前認得 {{ CATEGORIES.length }} 種類型、{{ DISHES.length }} 道料理
-    </p>
+    <RouterLink
+      to="/dex"
+      class="mx-auto mt-8 rounded-full px-4 py-2 text-center text-sm text-ink-muted transition hover:bg-white/5 hover:text-ink"
+    >
+      📖 料理圖鑑：神燈認得 {{ CATEGORIES.length }} 種類型、{{ DISHES.length }} 道料理 ›
+    </RouterLink>
   </main>
 </template>
