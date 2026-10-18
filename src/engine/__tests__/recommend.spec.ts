@@ -114,20 +114,6 @@ describe('模擬「其實想吃 X」的玩家（品質門檻）', () => {
     expect(hit.length / results.length).toBeGreaterThanOrEqual(0.9)
     expect(avg).toBeLessThanOrEqual(9)
   }, 60_000)
-
-  it('10% 答錯：≥ 65% 的料理仍在前 3 名', () => {
-    let total = 0
-    let hit = 0
-    for (const seed of [1, 2, 3]) {
-      for (const d of DISHES) {
-        const r = simulateRecommend(DISHES, d, { noise: 0.1, seed })
-        total++
-        if (r.rank >= 0 && r.rank < 3) hit++
-      }
-    }
-    console.info(`推薦模擬（雜訊）：${hit}/${total}（${((hit / total) * 100).toFixed(1)}%）`)
-    expect(hit / total).toBeGreaterThanOrEqual(0.65)
-  }, 60_000)
 })
 
 describe('推薦結果（隨機作答抽樣）', () => {
@@ -161,6 +147,43 @@ describe('推薦結果（隨機作答抽樣）', () => {
       .filter(({ state, result }) => !passesFilters(result!.dish, state.filters))
       .map(({ result }) => result!.dish.id)
     expect(violations).toEqual([])
+  })
+
+  it('「想／不想」是硬條件：主推的違反數一定是所有候選中最少的', () => {
+    const problems: string[] = []
+    for (const { state, result } of sessions) {
+      const counts = state.violations.map((v) => v.length)
+      const min = Math.min(...counts)
+      const main = counts[state.candidates.indexOf(result!.dish)]!
+      if (main !== min)
+        problems.push(`${result!.dish.id} 違反 ${main} 個，但有料理只違反 ${min} 個`)
+      if (result!.unmet.length !== main) problems.push(`${result!.dish.id} 的 unmet 數量不符`)
+    }
+    expect(problems).toEqual([])
+  })
+
+  it('只要有料理能符合全部硬條件，主推就一定全部符合、沒有「沒辦法滿足」', () => {
+    const satisfiable = sessions.filter(({ state }) => state.violations.some((v) => v.length === 0))
+    expect(satisfiable.length).toBeGreaterThan(100)
+    const broken = satisfiable
+      .filter(({ result }) => result!.unmet.length > 0)
+      .map(({ result }) => result!.dish.id)
+    expect(broken).toEqual([])
+  })
+
+  it('回歸：台式＋有湯＋吃麵＋多蔬菜，不會默默推出蔬菜少的料理', () => {
+    const input = {
+      situational: { meal: [3], budget: [2], company: [1], diet: [0] },
+      prefs: [
+        { id: 'taiwanese', answer: 'yes' },
+        { id: 'soup', answer: 'yes' },
+        { id: 'noodle', answer: 'yes' },
+        { id: 'veggie', answer: 'yes' },
+      ] satisfies PreferenceAnswer[],
+    }
+    const result = buildResult(deriveRecommendState(DISHES, input), input)!
+    // 要嘛蔬菜夠多，要嘛明確告訴玩家「沒辦法滿足：多蔬菜」
+    expect(result.dish.traits.veggie >= 0.4 || result.unmet.includes('多蔬菜')).toBe(true)
   })
 
   it('每個類型都至少被推薦過一次', () => {

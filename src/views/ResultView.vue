@@ -126,6 +126,18 @@ function shareResult() {
                 </li>
               </ul>
             </div>
+            <div v-if="result.unmet.length" class="mt-4">
+              <p class="text-xs text-ink-muted">沒有料理能同時符合全部條件，這是最接近的</p>
+              <ul class="mt-2 flex flex-wrap justify-center gap-2" aria-label="沒辦法滿足的條件">
+                <li
+                  v-for="u in result.unmet"
+                  :key="u"
+                  class="rounded-full border border-ember-400/50 px-3 py-1 text-sm text-ember-400"
+                >
+                  沒辦法滿足：{{ u }}
+                </li>
+              </ul>
+            </div>
           </FoodCard>
           <p v-if="relaxNotice" class="mt-3 text-center text-xs text-ink-muted">
             {{ relaxNotice }}

@@ -18,6 +18,10 @@ import { eligibleDishes, type Relaxation } from './filters'
  * 推薦模式（自適應追問）。
  * 和猜謎模式用同一套機率模型：把「玩家現在最想吃的那道」當成要猜的目標，
  * 每題挑最能縮小範圍的偏好題，範圍夠小就推薦機率最高的料理。
+ *
+ * 回答強度不同：
+ * - 「想／不想」是硬條件：違反的料理機率乘上 hardPenalty，排名一律排在符合的料理後面。
+ * - 「有點想／不太想」是彈性偏好：只透過似然函數加減分。
  */
 export interface RecommendConfig {
   epsilon: number
@@ -33,6 +37,8 @@ export interface RecommendConfig {
   tolerance: number
   /** 「還剩約 N 道」：機率達到最高者這個比例的料理才算 */
   aliveRatio: number
+  /** 每違反一個「想／不想」，機率乘上這個值 */
+  hardPenalty: number
 }
 
 export const DEFAULT_RECOMMEND_CONFIG: RecommendConfig = {
@@ -45,6 +51,7 @@ export const DEFAULT_RECOMMEND_CONFIG: RecommendConfig = {
   topK: 3,
   tolerance: 0.12,
   aliveRatio: 0.2,
+  hardPenalty: 1e-6,
 }
 
 export function sourceValue(dish: ResolvedDish, source: PreferenceSource): number {
@@ -55,6 +62,21 @@ export function sourceValue(dish: ResolvedDish, source: PreferenceSource): numbe
 export function preferenceValue(dish: ResolvedDish, preferenceId: string): number {
   const question = PREFERENCE_BY_ID[preferenceId]
   return question ? sourceValue(dish, question.source) : 0.5
+}
+
+/** 「想」「不想」是硬條件；「有點想／都可以／不太想」不是 */
+export function isStrongAnswer(p: PreferenceAnswer): boolean {
+  return p.answer === 'yes' || p.answer === 'no'
+}
+
+/**
+ * 料理是否違反某個硬條件：說「想」但值 < 0.4、說「不想」但值 > 0.6。
+ * 0.4～0.6 代表「不一定」，不算違反。
+ */
+export function violates(dish: ResolvedDish, p: PreferenceAnswer): boolean {
+  if (!isStrongAnswer(p) || !PREFERENCE_BY_ID[p.id]) return false
+  const value = preferenceValue(dish, p.id)
+  return p.answer === 'yes' ? value < 0.4 : value > 0.6
 }
 
 export interface RecommendInput {
@@ -69,6 +91,8 @@ export interface RecommendState {
   candidates: ResolvedDish[]
   /** 與 candidates 對齊的機率 */
   posterior: number[]
+  /** 與 candidates 對齊：每道料理違反了哪些硬條件（偏好題 id） */
+  violations: string[][]
   asked: Set<string>
 }
 
@@ -104,7 +128,13 @@ export function deriveRecommendState(
     if (target !== null) apply((d) => preferenceValue(d, p.id), target)
   }
 
-  return { filters, relaxed, candidates, posterior: normalize(weights), asked }
+  // 硬條件：違反越多，機率越接近 0（但不歸零，全部都違反時仍能挑出最接近的）
+  const violations = candidates.map((d) =>
+    input.prefs.filter((p) => violates(d, p)).map((p) => p.id),
+  )
+  weights = normalize(weights.map((w, i) => w * config.hardPenalty ** violations[i]!.length))
+
+  return { filters, relaxed, candidates, posterior: weights, violations, asked }
 }
 
 export type RecommendStep = { kind: 'question'; id: string } | { kind: 'done' }
@@ -154,11 +184,11 @@ export function aliveCount(
   return state.posterior.filter((p) => p > 0 && p >= max * config.aliveRatio).length
 }
 
-/** 依機率由高到低排序（同分時維持資料原本的順序） */
+/** 排名：先比違反的硬條件數（少的在前），再比機率（同分時維持資料原本的順序） */
 export function rankDishes(state: RecommendState): ResolvedDish[] {
   return state.candidates
-    .map((dish, i) => ({ dish, p: state.posterior[i]!, i }))
-    .sort((a, b) => b.p - a.p || a.i - b.i)
+    .map((dish, i) => ({ dish, v: state.violations[i]!.length, p: state.posterior[i]!, i }))
+    .sort((a, b) => a.v - b.v || b.p - a.p || a.i - b.i)
     .map((x) => x.dish)
 }
 
@@ -180,6 +210,8 @@ export interface RecommendResult {
   summary: string[]
   /** 主推料理符合了哪些偏好 */
   matched: string[]
+  /** 主推料理沒辦法滿足的硬條件（沒有料理能全部符合時才會有） */
+  unmet: string[]
   relaxed: Relaxation
 }
 
@@ -225,6 +257,9 @@ export function buildResult(
       ...input.prefs.map(preferenceChip).filter((c): c is string => c !== null),
     ],
     matched,
+    unmet: state.violations[state.candidates.indexOf(main)]!.map((id) =>
+      preferenceChip(input.prefs.find((p) => p.id === id)!)!,
+    ),
     relaxed: state.relaxed,
   }
 }
