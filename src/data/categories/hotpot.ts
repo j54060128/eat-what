@@ -34,7 +34,7 @@ export default defineCategory({
       name: '涮涮鍋',
       emoji: '🍲',
       traits: { japanese: 0.5, beef: 0.5, pork: 0.5, sharing: 0.3, pricey: 0.3 },
-      vibes: { healthy: 0.5, social: 0.2, comfort: 0.8 },
+      vibes: { heavy: 0.1, healthy: 0.5, social: 0.2, comfort: 0.8 },
     },
     {
       id: 'ginger-duck',

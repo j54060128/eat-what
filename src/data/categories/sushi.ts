@@ -54,6 +54,7 @@ export default defineCategory({
       name: '豆皮壽司',
       emoji: '🍙',
       traits: {
+        convenienceStore: 0.5,
         raw: 0,
         seafood: 0,
         fish: 0,

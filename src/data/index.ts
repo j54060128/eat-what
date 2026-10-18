@@ -7,6 +7,7 @@ import bento from './categories/bento'
 import twNoodle from './categories/twNoodle'
 import soupCongee from './categories/soupCongee'
 import nightMarket from './categories/nightMarket'
+import convenience from './categories/convenience'
 import breakfast from './categories/breakfast'
 import stirFry from './categories/stirFry'
 import hakka from './categories/hakka'
@@ -36,6 +37,7 @@ export const CATEGORY_MODULES: CategoryModule[] = [
   twNoodle,
   soupCongee,
   nightMarket,
+  convenience,
   breakfast,
   stirFry,
   hakka,

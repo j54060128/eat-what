@@ -62,5 +62,12 @@ export default defineCategory({
       traits: { pork: 1, braised: 1, chewy: 0.8, bowl: 0.3 },
       vibes: { heavy: 0.9, healthy: -0.5 },
     },
+    {
+      id: 'duck-rice',
+      name: '鴨肉飯',
+      emoji: '🦆',
+      traits: { duck: 1, braised: 0.3 },
+      vibes: { heavy: 0.4 },
+    },
   ],
 })

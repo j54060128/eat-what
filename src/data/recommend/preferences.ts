@@ -121,6 +121,13 @@ export const PREFERENCE_QUESTIONS: PreferenceQuestion[] = [
     no: '不要飲料',
     source: { trait: 'drink' },
   },
+  {
+    id: 'convenienceStore',
+    text: '想在便利商店隨便解決嗎？',
+    yes: '超商',
+    no: '不要超商',
+    source: { trait: 'convenienceStore' },
+  },
 
   // ── 菜系 ──
   {

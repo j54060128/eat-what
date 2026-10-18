@@ -59,7 +59,7 @@ export default defineCategory({
       id: 'lasagna',
       name: '千層麵',
       emoji: '🍝',
-      traits: { noodle: 0.6, cheese: 1, tomato: 1, beef: 0.8, grilled: 0.8 },
+      traits: { noodle: 0.8, cheese: 1, tomato: 1, beef: 0.8, grilled: 0.8 },
       vibes: { heavy: 1, comfort: 0.3 },
     },
     {

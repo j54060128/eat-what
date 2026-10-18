@@ -23,7 +23,7 @@ export default defineCategory({
       id: 'budae-jjigae',
       name: '部隊鍋',
       emoji: '🍲',
-      traits: { soup: 1, noodle: 1, cheese: 0.6, pork: 0.6, sharing: 0.8, spicy: 0.7 },
+      traits: { veggie: 0.6, soup: 1, noodle: 1, cheese: 0.6, pork: 0.6, sharing: 0.8, spicy: 0.7 },
       vibes: { warm: 1, heavy: 0.8, social: 0.8, speed: -0.2 },
     },
     {
@@ -46,7 +46,7 @@ export default defineCategory({
       id: 'sundubu',
       name: '嫩豆腐鍋',
       emoji: '🥘',
-      traits: { soup: 1, tofu: 1, spicy: 0.8, seafood: 0.6, bowl: 0.8 },
+      traits: { veggie: 0.5, soup: 1, tofu: 1, spicy: 0.8, seafood: 0.6, bowl: 0.8 },
       vibes: { warm: 1, heavy: 0.3, healthy: 0.3, social: -0.4 },
     },
     {
@@ -68,7 +68,7 @@ export default defineCategory({
       id: 'haemul-pajeon',
       name: '海鮮煎餅',
       emoji: '🥞',
-      traits: { seafood: 1, grilled: 1, dough: 0.5, sharing: 0.8, spicy: 0.1 },
+      traits: { veggie: 0.5, seafood: 1, grilled: 1, dough: 0.5, sharing: 0.8, spicy: 0.1 },
       vibes: { social: 0.7 },
     },
     {

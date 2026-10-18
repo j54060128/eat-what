@@ -46,7 +46,7 @@ export default defineCategory({
       id: 'japanese-curry',
       name: '日式咖哩飯',
       emoji: '🍛',
-      traits: { curry: 1, pork: 0.5, beef: 0.3, fried: 0.3, bowl: 0.3 },
+      traits: { veggie: 0.4, curry: 1, pork: 0.5, beef: 0.3, fried: 0.3, bowl: 0.3 },
       vibes: { comfort: 0.7 },
     },
     {
@@ -69,6 +69,20 @@ export default defineCategory({
       emoji: '🐟',
       traits: { fish: 1, seafood: 1, grilled: 1, bowl: 0, egg: 0 },
       vibes: { heavy: 0.3, healthy: 0.4 },
+    },
+    {
+      id: 'omurice',
+      name: '蛋包飯',
+      emoji: '🍳',
+      traits: { rice: 1, egg: 1, tomato: 0.8, western: 0.4, bowl: 0, sweet: 0.2 },
+      vibes: { comfort: 0.7 },
+    },
+    {
+      id: 'tonkatsu-teishoku',
+      name: '炸豬排定食',
+      emoji: '🍖',
+      traits: { pork: 1, fried: 1, bowl: 0, egg: 0, veggie: 0.5 },
+      vibes: { heavy: 0.8, healthy: -0.4 },
     },
   ],
 })

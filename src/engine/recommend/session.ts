@@ -239,10 +239,11 @@ export function buildResult(
     if (otherCategories.length >= 3) break
   }
 
+  // 「符合」：料理的值跟回答相差 0.4 以內（例如說「想」，值 ≥ 0.6 就算符合）
   const matched = input.prefs
     .filter((p) => {
       const target = answerTarget(p.answer)
-      return target !== null && Math.abs(target - preferenceValue(main, p.id)) <= 0.35
+      return target !== null && Math.abs(target - preferenceValue(main, p.id)) <= 0.4
     })
     .map(preferenceChip)
     .filter((c): c is string => c !== null)

@@ -55,5 +55,12 @@ export default defineCategory({
       traits: { meatless: 1, veggie: 1, tofu: 0.7 },
       vibes: { heavy: 0.2, healthy: 0.7 },
     },
+    {
+      id: 'buffet-bento',
+      name: '自助餐',
+      emoji: '🍱',
+      traits: { veggie: 0.9, pork: 0.5, chicken: 0.5, fried: 0.4, meatless: 0.3 },
+      vibes: { healthy: 0.3, comfort: 0.9 },
+    },
   ],
 })

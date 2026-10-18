@@ -30,7 +30,7 @@ export default defineCategory({
       id: 'kung-pao-chicken',
       name: '宮保雞丁',
       emoji: '🥜',
-      traits: { chicken: 1, spicy: 0.7, chinese: 1, taiwanese: 0.4 },
+      traits: { veggie: 0.4, chicken: 1, spicy: 0.7, chinese: 1, taiwanese: 0.4 },
     },
     {
       id: 'mapo-tofu',

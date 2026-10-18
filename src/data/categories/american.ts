@@ -43,6 +43,7 @@ export default defineCategory({
       name: '墨西哥捲餅',
       emoji: '🌯',
       traits: {
+        veggie: 0.4,
         dough: 1,
         handheld: 1,
         rice: 0.7,

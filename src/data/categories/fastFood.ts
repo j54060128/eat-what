@@ -43,7 +43,7 @@ export default defineCategory({
       id: 'hot-dog',
       name: '熱狗堡',
       emoji: '🌭',
-      traits: { dough: 1, pork: 0.8, grilled: 0.5, fried: 0.2 },
+      traits: { convenienceStore: 0.5, dough: 1, pork: 0.8, grilled: 0.5, fried: 0.2 },
       vibes: { heavy: 0.5 },
     },
   ],

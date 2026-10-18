@@ -71,6 +71,7 @@ export const TRAITS = [
   // ── 情境 ──
   { id: 'breakfast', question: '早餐時段常吃到它嗎？', default: 0 },
   { id: 'nightMarket', question: '夜市常看得到它嗎？', default: 0 },
+  { id: 'convenienceStore', question: '便利商店買得到嗎？', default: 0 },
   { id: 'sharing', question: '通常是好幾個人一起分著吃嗎？', default: 0.2 },
   { id: 'pricey', question: '一個人吃通常要超過 300 元嗎？', default: 0.2 },
   { id: 'cold', question: '通常是冰的或冷的嗎？', default: 0 },
